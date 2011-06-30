@@ -47,6 +47,12 @@
     #hero-slider ul li a{
       cursor: pointer;
     }
+    #notice{
+      float: left;
+      margin-top: 100px;
+      margin-left: -249px;
+      font-family: mono;
+    }
 		</style>
   </head>
   <body>
@@ -79,10 +85,14 @@
       </ul>
     </div><!---hero-slider-->
     <div class='clear'></div>
+    <div id='notice' style='display:none'>
+      <a href='https://github.com/psahni/jquery.image.viewer/blob/master/image_viewer.html'>Click here to get the code</a>
+    </div>
   </body>
   <script type='text/javascript'>
   $(document).ready(function(){
-    show_active_picture()
+    show_active_picture();
+    $('#notice').fadeIn('slow')
     $('#hero-slider ul a').click(function(){
       $($("#hero-slider ul li a.active").attr('rel')).hide();
       $("#hero-slider ul li a.active").removeClass('active');
