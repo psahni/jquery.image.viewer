@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script src='scroll-to.js' type="text/javascript"></script>
+		<style>
+		
+		body{
+		  background-color: black;
+		 }
+		
+		 #hero-slider{
+		   text-align: center;
+		   padding: 10px; 
+       width: 1000px;
+       border-width: 0 1px 1px 1px 1px; 
+       margin:0 auto;	
+		  }
+		 
+     #hero-slider .mask{
+      width: auto;
+      
+     }
+     #hero-slider .mask .slider-body{
+        display:block;
+        margin-left: 241px;
+        border: 1px solid #FFFF;
+     }
+     
+     #hero-slider .mask .slider-body .panel{
+      float:left;
+      margin-left: 10px;
+     }
+    #hero-slider ul{
+        margin:0;
+        padding:15px 15px 0 15px;
+        list-style:none;
+        float:left;
+        height:285px;
+        clear:both;
+        margin-left: 268px;
+    }
+    #hero-slider ul li{
+      float:left;
+      margin-right: 10px;
+      color: #FFFFFF;
+    }
+    #hero-slider ul li a{
+      cursor: pointer;
+    }
+		</style>
+  </head>
+  <body>
+    <div id='hero-slider'>
+      <div class="mask">
+        <div class="slider-body">
+          <div class="panel" id="panel-1">
+            <h2>Cricket</h2>
+            <p><img src='promo.gif' width='300' height='250'/></p>
+          </div>
+          <div class="panel" id="panel-2">
+              <h2>Hockey</h2>
+              <p><img src='pic3.jpg' width='300' height='250'/></p>
+          </div>
+          <div class="panel" id="panel-3">
+              <h2>FootBall</h2>
+              <p><img src='pic2.jpg' width='300' height='250'/></p>
+          </div>
+          <div class='panel' id='panel-4'>
+            <h2>Table</h2>
+            <p><img src='pic1.jpg' width='300' height='250'/></p>
+          </div>
+        </div><!--slider body-->
+      </div> <!-- .mask -->
+       <ul>
+        <li><a rel='#panel-1' class='active'>Photo1</a></li>
+        <li><a rel='#panel-2'>Photo2</a></li>
+        <li><a rel='#panel-3'>Photo3</a></li>
+        <li><a rel='#panel-4'>Photo4</a></li>
+      </ul>
+    </div><!---hero-slider-->
+    <div class='clear'></div>
+  </body>
+  <script type='text/javascript'>
+  $(document).ready(function(){
+    show_active_picture()
+    $('#hero-slider ul a').click(function(){
+      $($("#hero-slider ul li a.active").attr('rel')).hide();
+      $("#hero-slider ul li a.active").removeClass('active');
+      $(this).addClass('active');
+      var $next_element = $($(this).attr('rel')) ;
+      $next_element.fadeIn('slow');
+      $('.mask').scrollTo($(this).attr('rel'), 300);
+       return false;  
+    });
+
+   })
+   
+   function  show_active_picture(){
+     var inactive_elements =  $("#hero-slider ul li a:not('.active')")
+     $(inactive_elements).each(function(){
+        id = $(this).attr('rel');
+        $(id).hide();
+     });
+   }
+  </script>
+</html>
+
